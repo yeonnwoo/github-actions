@@ -38,7 +38,7 @@ jobs:
 
   # 파일 압축
     - name: Make zip file
-      run: zip -r ./springboor-with-githubaction.zip ./deploy
+      run: zip -r ./webtooniverse-springboot-build.zip ./deploy
 
   # Deploy
     - name: Deploy
