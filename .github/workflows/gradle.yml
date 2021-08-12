@@ -59,6 +59,9 @@ jobs:
     - name: Upload to S3
       run: aws s3 cp --region ap-northeast-2 --acl private ./webtooniverse-springboot-build.zip s3://webtooniverse-springboot-build/
 
+    - name: CodeDeploy
+      run: aws deploy create-deployment --application-name webtooniverse-webservice --deployment-group-name webtooniverse-webservice-group --s3-location bucket=webtooniverse-springboot-build,key=webtooniverse-springboot-build.zip,bundleType=zip
+      
     #slack
     - name: action-slack
       uses: 8398a7/action-slack@v3
