@@ -46,7 +46,7 @@ jobs:
 
   # 파일 압축
     - name: Make zip file
-      run: zip -r ./webtooniverse-springboot-build.zip ./deploy
+      run: zip -r ./webtooniverse.zip ./deploy
 
   # Deploy
     - name: Deploy
@@ -57,7 +57,7 @@ jobs:
         aws-region: ap-northeast-2
 
     - name: Upload to S3
-      run: aws s3 cp --region ap-northeast-2 --acl private ./webtooniverse-springboot-build.zip s3://webtooniverse-springboot-build/
+      run: aws s3 cp --region ap-northeast-2 --acl private ./webtooniverse.zip s3://webtooniverse/
 
     - name: CodeDeploy
       run: aws deploy create-deployment --application-name webtooniverse-webservice --deployment-group-name webtooniverse-webservice-group --s3-location bucket=webtooniverse-springboot-build,key=webtooniverse-springboot-build.zip,bundleType=zip
